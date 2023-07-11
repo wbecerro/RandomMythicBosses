@@ -1,0 +1,11 @@
+name: RandomMythicBosses
+version: 1.0
+author: wbe
+main: wbe.randommythicbosses.RandomMythicBosses
+description: Random spawn Mythic Mob mob on worlds
+depend: [MythicMobs]
+api-version: 1.19
+commands:
+  randommythicboss:
+    description: Main command
+    aliases: rmb

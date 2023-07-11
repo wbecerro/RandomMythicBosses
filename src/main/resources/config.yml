@@ -1,0 +1,23 @@
+spawnedBoss: "&aA Mythic boss has spawned randomly in this world"
+spawnedBossCoords: "&aThe boss has been summoned in world &e%world% &aon coords &e%coords%"
+bossNotFound: "&e%boss% &cis not a valid boss"
+bossSpawned: "&e%player% &ahas awakened a boss"
+onlyMainHand: "&e%compass_name% &ccan only be use in main hand"
+bossFound: "&aFound Mythic Mob, quickly go!"
+noBoss: "&cI can not found any mythic mob spawn D:"
+#Default Time to spawn a random boss in seconds 1 hour = 3600 seconds
+defaultTime: 3600
+#Radius to spawn boss from spawn location
+radiusSpawn: 2500
+#Worlds Enabled, random boss can only spawn on an random world from enabledWorlds list
+enabledWorlds:
+  - world
+bosses:
+  - boss1
+  - boss2
+  - boss3
+compass:
+  name: "&6Compass of the Gods"
+  lore:
+    - "&dUse this compass to find the mythic bosses"
+    - "&dthat appear randomly on the world"
