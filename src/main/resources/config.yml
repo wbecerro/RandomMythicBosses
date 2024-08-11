@@ -1,15 +1,29 @@
 spawnedBoss: "&aA Mythic boss has spawned randomly in this world"
 spawnedBossCoords: "&aThe boss has been summoned in world &e%world% &aon coords &e%coords%"
 bossNotFound: "&e%boss% &cis not a valid boss"
-bossSpawned: "&e%player% &ahas awakened a boss"
+bossSpawned: "&e%player% &ahas awakened the legendary boss %boss%"
 onlyMainHand: "&e%compass_name% &ccan only be use in main hand"
-bossFound: "&aFound Mythic Mob, quickly go!"
-noBoss: "&cI can not found any mythic mob spawn D:"
+bossFound: "&aFound Mythic Mob, go quickly!"
+noBoss: "&cI can not find any mythic mob spawn D:"
+noPermission: "&b[&cJefes&b] &eNo tienes permiso para hacer esto."
+timeMessage: "&b[&cJefes&b] &eQuedan %time% para volver a intentar invocar un jefe."
+locationMessage: "&b[&cJefes&b] &eEl jefe está localizado en X: %x% Y: %y% Z: %z% en el mundo %world%."
+limitMessage: "&b[&cJefes&b] &eEl límite del mundo es %limit%."
+bossForced: "&b[&cJefes&b] &eHas forzado la invocación de un jefe."
+bossDespawned: "&b[&cJefes&b] &eHas forzado la desaparición de los jefes de todos los mundos."
+playerOnly: "&b[&cJefes&b] &eEste comando solo puede ser ejecutado por jugadores."
+help:
+  - "&b/RandomMythicBosses help &eMuestra esta página."
+  - "&b/RandomMythicBosses time &eMuestra el tiempo para intentar invocar un jefe."
+  - "&b/RandomMythicBosses location &eMuestra la localización del jefe."
+  - "&b/RandomMythicBosses limit &eMuestra el límite del mundo."
+  - "&b/RandomMythicBosses force &eFuerza la invoación de un jefe."
+  - "&b/RandomMythicBosses despawn &eFuerza la desaparición de los jefes de todos los mundos."
 #Default Time to spawn a random boss in seconds 1 hour = 3600 seconds
 defaultTime: 3600
 #Radius to spawn boss from spawn location
 radiusSpawn: 2500
-#Worlds Enabled, random boss can only spawn on an random world from enabledWorlds list
+#Worlds Enabled, random boss can only spawn on a random world from enabledWorlds list
 enabledWorlds:
   - world
 bosses:

@@ -20,6 +20,8 @@ public class RecipeManager {
 
     private FileConfiguration config;
 
+    private NamespacedKey key;
+
     public RecipeManager(RandomMythicBosses plugin) {
         this.plugin = plugin;
         this.config = this.plugin.getConfig();
@@ -34,7 +36,7 @@ public class RecipeManager {
         meta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
         this.compass.setItemMeta(meta);
         this.plugin.getServer().resetRecipes();
-        NamespacedKey key = new NamespacedKey((Plugin) this.plugin, "bukkit");
+        key = new NamespacedKey((Plugin) this.plugin, "bukkit");
         ShapedRecipe compassRecipe = new ShapedRecipe(key, this.compass);
         compassRecipe.shape(new String[] { " D ", "GCI", " E " });
         compassRecipe.setIngredient('C', Material.COMPASS);
@@ -43,5 +45,9 @@ public class RecipeManager {
         compassRecipe.setIngredient('G', Material.GOLD_INGOT);
         compassRecipe.setIngredient('I', Material.IRON_INGOT);
         this.plugin.getServer().addRecipe((Recipe)compassRecipe);
+    }
+
+    public NamespacedKey getKey() {
+        return key;
     }
 }

@@ -1,5 +1,6 @@
 package wbe.randommythicbosses;
 
+import io.lumine.mythic.api.mobs.MythicMob;
 import io.lumine.mythic.bukkit.MythicBukkit;
 import io.lumine.mythic.core.mobs.MobExecutor;
 import java.util.Collection;
@@ -15,6 +16,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.Plugin;
@@ -36,7 +39,7 @@ public class PlayerListener implements Listener {
     public void onInteract(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         Random r = new Random();
-        if (e.hasBlock())
+        if (e.hasBlock()) {
             if (e.getClickedBlock().getType() == Material.END_PORTAL_FRAME) {
                 Location bossBlockLocation = e.getClickedBlock().getLocation();
                 if (isBossSpawn(e.getClickedBlock())) {
@@ -44,10 +47,11 @@ public class PlayerListener implements Listener {
                     Collection<String> mobs = mm.getMobNames();
                     String boss = this.config.getStringList("bosses").get(r.nextInt(this.config.getStringList("bosses").size()));
                     if (mobs.contains(boss)) {
+                        MythicMob bossMob =  mm.getMythicMob(boss).get();
                         removeBossSpawn(e.getClickedBlock().getLocation(), p.getWorld().getName());
                         mm.spawnMob(boss, bossBlockLocation);
                         for (Player player : Bukkit.getServer().getWorld(p.getWorld().getName()).getPlayers())
-                            player.sendMessage(this.config.getString("bossSpawned").replace("&", "§").replace("%player%", p.getName()));
+                            player.sendMessage(this.config.getString("bossSpawned").replace("&", "§").replace("%player%", p.getName()).replace("%boss%", bossMob.getDisplayName().get()));
                     } else {
                         p.sendMessage(this.config.getString("bossNotFound").replace("&", "§").replace("%boss%", boss));
                     }
@@ -55,21 +59,34 @@ public class PlayerListener implements Listener {
             } else if (p.getInventory().getItemInOffHand().getType() == Material.COMPASS) {
                 ItemStack item = p.getInventory().getItemInOffHand();
                 if (item.getItemMeta().getDisplayName().equals(this.config.getString("compass.name").replace("&", "§")) &&
-                                item.getItemMeta().hasLore())
-                        p.sendMessage(this.config.getString("onlyMainHand").replace("&", "§").replace("%compass_name%", this.config.getString("compass.name").replace("&", "§")));
+                        item.getItemMeta().hasLore())
+                    p.sendMessage(this.config.getString("onlyMainHand").replace("&", "§").replace("%compass_name%", this.config.getString("compass.name").replace("&", "§")));
             } else if (p.getInventory().getItemInMainHand().getType() == Material.COMPASS) {
                 ItemStack item = p.getInventory().getItemInMainHand();
                 if (item.getItemMeta().getDisplayName().equals(this.config.getString("compass.name").replace("&", "§")) &&
                         item.getItemMeta().hasLore() && (
-                                e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK))
-                if (this.plugin.bossEggs.containsKey(p.getWorld().getName())) {
-                    p.setCompassTarget(this.plugin.bossEggs.get(p.getWorld().getName()));
-                    p.sendMessage(this.config.getString("bossFound").replace("&", "§"));
-                } else {
-                    p.setCompassTarget(p.getWorld().getSpawnLocation());
-                    p.sendMessage(this.config.getString("noBoss").replace("&", "§"));
-                }
+                        e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK))
+                    if (this.plugin.bossEggs.containsKey(p.getWorld().getName())) {
+                        p.setCompassTarget(this.plugin.bossEggs.get(p.getWorld().getName()));
+                        p.sendMessage(this.config.getString("bossFound").replace("&", "§"));
+                    } else {
+                        p.setCompassTarget(p.getWorld().getSpawnLocation());
+                        p.sendMessage(this.config.getString("noBoss").replace("&", "§"));
+                    }
             }
+        }
+    }
+
+    @EventHandler
+    public void onJoinDiscoverRecipe(PlayerJoinEvent e) {
+        Player p = e.getPlayer();
+        p.discoverRecipe(plugin.getKey());
+    }
+
+    @EventHandler
+    public void onLeaveUndiscoverRecipe(PlayerQuitEvent e) {
+        Player p = e.getPlayer();
+        p.undiscoverRecipe(plugin.getKey());
     }
 
     public boolean isBossSpawn(Block b) {
