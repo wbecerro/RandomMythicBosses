@@ -1,37 +1,53 @@
-spawnedBoss: "&aA Mythic boss has spawned randomly in this world"
-spawnedBossCoords: "&aThe boss has been summoned in world &e%world% &aon coords &e%coords%"
-bossNotFound: "&e%boss% &cis not a valid boss"
-bossSpawned: "&e%player% &ahas awakened the legendary boss %boss%"
-onlyMainHand: "&e%compass_name% &ccan only be use in main hand"
-bossFound: "&aFound Mythic Mob, go quickly!"
-noBoss: "&cI can not find any mythic mob spawn D:"
-noPermission: "&b[&cJefes&b] &eNo tienes permiso para hacer esto."
-timeMessage: "&b[&cJefes&b] &eQuedan %time% para volver a intentar invocar un jefe."
-locationMessage: "&b[&cJefes&b] &eEl jefe está localizado en X: %x% Y: %y% Z: %z% en el mundo %world%."
-limitMessage: "&b[&cJefes&b] &eEl límite del mundo es %limit%."
-bossForced: "&b[&cJefes&b] &eHas forzado la invocación de un jefe."
-bossDespawned: "&b[&cJefes&b] &eHas forzado la desaparición de los jefes de todos los mundos."
-playerOnly: "&b[&cJefes&b] &eEste comando solo puede ser ejecutado por jugadores."
-help:
-  - "&b/RandomMythicBosses help &eMuestra esta página."
-  - "&b/RandomMythicBosses time &eMuestra el tiempo para intentar invocar un jefe."
-  - "&b/RandomMythicBosses location &eMuestra la localización del jefe."
-  - "&b/RandomMythicBosses limit &eMuestra el límite del mundo."
-  - "&b/RandomMythicBosses force &eFuerza la invoación de un jefe."
-  - "&b/RandomMythicBosses despawn &eFuerza la desaparición de los jefes de todos los mundos."
-#Default Time to spawn a random boss in seconds 1 hour = 3600 seconds
-defaultTime: 3600
-#Radius to spawn boss from spawn location
-radiusSpawn: 2500
-#Worlds Enabled, random boss can only spawn on a random world from enabledWorlds list
-enabledWorlds:
-  - world
-bosses:
-  - boss1
-  - boss2
-  - boss3
-compass:
-  name: "&6Compass of the Gods"
-  lore:
-    - "&dUse this compass to find the mythic bosses"
-    - "&dthat appear randomly on the world"
+Messages:
+  spawnedBoss: "&b[&cJefes&b] &dUn jefe ha aparecido en este mundo."
+  spawnedBossCoords: "&b[&cJefes&b] &eEl jefe ha aparecido en el mundo %world% &een las coordenadas &e%coords%."
+  bossNotFound: "&b[&cJefes&b] &e%boss% &&eno es un jefe válido. Alguien se ha cagado encima."
+  bossSpawned: "&b[&cJefes&b] &e%player% &eha despertado al jefe %boss%&e."
+  onlyMainHand: "&b[&cJefes&b] &eLa %compass_name% &esolo puede ser usada en la mano principal."
+  bossFound: "&b[&cJefes&b] &eLa brújula ha encontrado al jefe y te marca el camino."
+  noBoss: "&b[&cJefes&b] &eLa brújula no ha podido encontrar ningún jefe."
+  noPermission: "&b[&cJefes&b] &eNo tienes permiso para hacer esto."
+  timeMessage: "&b[&cJefes&b] &eQuedan %time% para volver a intentar invocar un jefe."
+  locationMessage: "&b[&cJefes&b] &eEl jefe está localizado en X: %x% Y: %y% Z: %z% en el mundo %world%."
+  limitMessage: "&b[&cJefes&b] &eEl límite del mundo es %limit%."
+  bossForced: "&b[&cJefes&b] &eHas forzado la invocación de un jefe."
+  bossDespawned: "&b[&cJefes&b] &eHas forzado la desaparición de los jefes de todos los mundos."
+  reload: "&b[&cJefes&b] &eSe ha recargado la configuración del plugin."
+  help:
+    - "&d-===- &b[&cJefes&b] &d-===-"
+    - "&b/RandomMythicBosses help &eMuestra esta página."
+    - "&b/RandomMythicBosses time &eMuestra el tiempo para intentar invocar un jefe."
+    - "&b/RandomMythicBosses location &eMuestra la localización del jefe."
+    - "&b/RandomMythicBosses limit &eMuestra el límite del mundo."
+    - "&b/RandomMythicBosses force &eFuerza la invoación de un jefe."
+    - "&b/RandomMythicBosses despawn &eFuerza la desaparición de los jefes de todos los mundos."
+    - "&b/RandomMythicBosses reload &eSe ha recargado la configuración del plugin."
+
+Config:
+  defaultTime: 3600
+  enabledWorlds:
+    - world
+  bosses:
+    - Aquiles
+    - Aracne
+    - Argus
+    - Atlas
+    - Cambiaformas
+    - Jack
+    - Medusa
+    - MiniMinotauro
+    - Prometeo
+    - Tanatos
+    - Triton
+  bossEgg:
+    upperBlock: END_PORTAL_FRAME
+    lowerBlock: END_ROD
+  maxSpawnRetries: 10
+
+Items:
+  compass:
+    name: "&d&lBrújula de Hécate"
+    lore:
+      - ""
+      - "&7Usa esta brújula imbuida con el poder de"
+      - "&7la titánide benefactora de la magia."
