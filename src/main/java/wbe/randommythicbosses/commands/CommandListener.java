@@ -63,7 +63,7 @@ public class CommandListener implements CommandExecutor {
                 sender.sendMessage(RandomMythicBosses.messages.bossForced);
                 utilities.spawnBossEgg(true);
             } else if(args[0].equalsIgnoreCase("despawn")) {
-                if(!sender.hasPermission("randommythicbosses.command.force")) {
+                if(!sender.hasPermission("randommythicbosses.command.despawn")) {
                     sender.sendMessage(RandomMythicBosses.messages.noPermission);
                     return false;
                 }
