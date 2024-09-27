@@ -110,6 +110,6 @@ public class Utilities {
         if(seconds > 0) {
             timeLine += seconds + "s";
         }
-        return RandomMythicBosses.messages.timeMessage.replace("%time%", timeLine);
+        return timeLine;
     }
 }

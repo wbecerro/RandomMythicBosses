@@ -34,7 +34,7 @@ public class CommandListener implements CommandExecutor {
                     sender.sendMessage(RandomMythicBosses.messages.noPermission);
                     return false;
                 }
-                sender.sendMessage(utilities.getTime());
+                sender.sendMessage(RandomMythicBosses.messages.timeMessage.replace("%time%", utilities.getTime()));
             } else if(args[0].equalsIgnoreCase("location")) {
                 if(!sender.hasPermission("randommythicbosses.command.location")) {
                     sender.sendMessage(RandomMythicBosses.messages.noPermission);

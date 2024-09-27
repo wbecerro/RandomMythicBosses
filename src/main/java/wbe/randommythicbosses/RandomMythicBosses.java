@@ -11,6 +11,7 @@ import wbe.randommythicbosses.commands.CommandListener;
 import wbe.randommythicbosses.config.Config;
 import wbe.randommythicbosses.config.Messages;
 import wbe.randommythicbosses.listeners.EventListeners;
+import wbe.randommythicbosses.papi.PapiExtension;
 import wbe.randommythicbosses.recipes.RecipeLoader;
 import wbe.randommythicbosses.util.Scheduler;
 import wbe.randommythicbosses.util.Utilities;
@@ -22,6 +23,8 @@ public class RandomMythicBosses extends JavaPlugin {
     private CommandListener commandListener;
 
     private EventListeners eventListeners;
+
+    private PapiExtension papiExtension;
 
     public static RecipeLoader recipeLoader;
 
@@ -36,6 +39,10 @@ public class RandomMythicBosses extends JavaPlugin {
     private Utilities utilities = new Utilities();
 
     public void onEnable() {
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            papiExtension = new PapiExtension();
+            papiExtension.register();
+        }
         saveDefaultConfig();
         getLogger().info("RandomMythicBosses enabled correctly");
         reloadConfiguration();
