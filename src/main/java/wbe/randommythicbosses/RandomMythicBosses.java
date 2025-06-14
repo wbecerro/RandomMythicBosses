@@ -8,6 +8,7 @@ import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import wbe.randommythicbosses.commands.CommandListener;
+import wbe.randommythicbosses.commands.TabListener;
 import wbe.randommythicbosses.config.Config;
 import wbe.randommythicbosses.config.Messages;
 import wbe.randommythicbosses.listeners.EventListeners;
@@ -21,6 +22,8 @@ public class RandomMythicBosses extends JavaPlugin {
     private FileConfiguration configuration;
 
     private CommandListener commandListener;
+
+    private TabListener tabListener;
 
     private EventListeners eventListeners;
 
@@ -51,6 +54,8 @@ public class RandomMythicBosses extends JavaPlugin {
         recipeLoader.loadRecipes();
         commandListener = new CommandListener();
         getCommand("RandomMythicBosses").setExecutor(this.commandListener);
+        tabListener = new TabListener();
+        getCommand("RandomMythicBosses").setTabCompleter(this.tabListener);
         eventListeners = new EventListeners();
         eventListeners.initializeListeners();
         Scheduler.startSchedulers();
