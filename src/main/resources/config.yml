@@ -21,6 +21,7 @@ Messages:
     - "&b/RandomMythicBosses limit &eMuestra el límite del mundo."
     - "&b/RandomMythicBosses force &eFuerza la invoación de un jefe."
     - "&b/RandomMythicBosses despawn &eFuerza la desaparición de los jefes de todos los mundos."
+    - "&b/RandomMythicBosses compass <Jugador> &eDa una &d&lBrújula de Hécate&e."
     - "&b/RandomMythicBosses reload &eSe ha recargado la configuración del plugin."
 
 Config:

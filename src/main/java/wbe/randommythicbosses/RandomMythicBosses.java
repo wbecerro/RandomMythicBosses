@@ -13,7 +13,6 @@ import wbe.randommythicbosses.config.Config;
 import wbe.randommythicbosses.config.Messages;
 import wbe.randommythicbosses.listeners.EventListeners;
 import wbe.randommythicbosses.papi.PapiExtension;
-import wbe.randommythicbosses.recipes.RecipeLoader;
 import wbe.randommythicbosses.util.Scheduler;
 import wbe.randommythicbosses.util.Utilities;
 
@@ -29,7 +28,6 @@ public class RandomMythicBosses extends JavaPlugin {
 
     private PapiExtension papiExtension;
 
-    public static RecipeLoader recipeLoader;
 
     public static Config config;
 
@@ -50,8 +48,6 @@ public class RandomMythicBosses extends JavaPlugin {
         getLogger().info("RandomMythicBosses enabled correctly");
         reloadConfiguration();
 
-        recipeLoader = new RecipeLoader();
-        recipeLoader.loadRecipes();
         commandListener = new CommandListener();
         getCommand("RandomMythicBosses").setExecutor(this.commandListener);
         tabListener = new TabListener();
@@ -64,7 +60,6 @@ public class RandomMythicBosses extends JavaPlugin {
     public void onDisable() {
         utilities.removeAllEggs();
         getServer().getScheduler().cancelTasks(this);
-        recipeLoader.unloadRecipes();
         getLogger().info("RandomMythicBosses disabled correctly");
     }
 

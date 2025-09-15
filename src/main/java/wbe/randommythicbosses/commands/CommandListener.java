@@ -1,11 +1,13 @@
 package wbe.randommythicbosses.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import wbe.randommythicbosses.RandomMythicBosses;
+import wbe.randommythicbosses.items.Compass;
 import wbe.randommythicbosses.util.Utilities;
 
 public class CommandListener implements CommandExecutor {
@@ -76,6 +78,18 @@ public class CommandListener implements CommandExecutor {
                 }
                 sender.sendMessage(RandomMythicBosses.messages.reload);
                 plugin.reloadConfiguration();
+            } else if(args[0].equalsIgnoreCase("compass")) {
+                if(!sender.hasPermission("randommythicbosses.command.compass")) {
+                    sender.sendMessage(RandomMythicBosses.messages.noPermission);
+                    return false;
+                }
+
+                Player otherPlayer = player;
+                if(args.length > 1) {
+                    otherPlayer = Bukkit.getServer().getPlayer(args[1]);
+                }
+
+                otherPlayer.getInventory().addItem(new Compass());
             }
         }
         return true;
