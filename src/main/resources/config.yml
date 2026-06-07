@@ -13,6 +13,7 @@ Messages:
   bossForced: "&b[&cJefes&b] &eHas forzado la invocación de un jefe."
   bossDespawned: "&b[&cJefes&b] &eHas forzado la desaparición de los jefes de todos los mundos."
   reload: "&b[&cJefes&b] &eSe ha recargado la configuración del plugin."
+  synchronizing: "&eSincronizando con el servidor"
   help:
     - "&d-===- &b[&cJefes&b] &d-===-"
     - "&b/RandomMythicBosses help &eMuestra esta página."

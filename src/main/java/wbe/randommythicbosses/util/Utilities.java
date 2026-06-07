@@ -104,12 +104,19 @@ public class Utilities {
         if(hours > 0) {
             timeLine += hours + "h ";
         }
+
         if(minutes > 0) {
             timeLine += minutes + "m ";
         }
+
         if(seconds > 0) {
             timeLine += seconds + "s";
         }
+
+        if(timeLine.isEmpty()) {
+            return RandomMythicBosses.messages.synchronizing;
+        }
+
         return timeLine;
     }
 }

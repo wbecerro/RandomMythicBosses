@@ -23,6 +23,7 @@ public class Messages {
     public String bossForced;
     public String bossDespawned;
     public String reload;
+    public String synchronizing;
     public List<String> help = new ArrayList<>();
 
     public Messages(FileConfiguration config) {
@@ -42,6 +43,7 @@ public class Messages {
         bossForced = config.getString("Messages.bossForced").replace("&", "§");
         bossDespawned = config.getString("Messages.bossDespawned").replace("&", "§");
         reload = config.getString("Messages.reload").replace("&", "§");
+        synchronizing = config.getString("Messages.synchronizing").replace("&", "§");
         help = config.getStringList("Messages.help");
     }
 }
